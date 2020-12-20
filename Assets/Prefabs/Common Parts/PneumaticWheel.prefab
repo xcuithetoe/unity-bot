@@ -43,7 +43,7 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.1016
   m_SuspensionSpring:
-    spring: 200
+    spring: 2000
     damper: 200
     targetPosition: 0.1016
   m_SuspensionDistance: 0.01
