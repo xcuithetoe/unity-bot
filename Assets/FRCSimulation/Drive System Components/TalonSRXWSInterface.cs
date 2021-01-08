@@ -146,8 +146,8 @@ public class TalonSRXWSInterface : MonoBehaviour {
         jo.Add(new JProperty("type", "SimDevice"));
         jo.Add(new JProperty("device", $"Talon SRX[{Id}]/Encoder"));
         Newtonsoft.Json.Linq.JObject dataObject = new JObject();
-        //dataObject.Add(new JProperty("<>velocity", encoderVelocity));
-        dataObject.Add(new JProperty("<>position", encoderPosition));
+        dataObject.Add(new JProperty(">position", encoderPosition));
+        dataObject.Add(new JProperty(">velocity", encoderVelocity));
         jo.Add("data", dataObject);
         string message = JsonConvert.SerializeObject(jo);
         ws.Send(message);

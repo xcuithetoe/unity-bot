@@ -38,9 +38,9 @@ public class WebSocketInterface : MonoBehaviour {
         ws.OnMessage += (byte[] msg) => {
             var message = System.Text.Encoding.UTF8.GetString(msg);
 
-            if ( message.Contains("Encoder") && message.Contains("position")) {
-                Debug.Log($"Received data is {message}") ;
-            }
+            // if ( message.Contains("Encoder") && message.Contains("position")) {
+            //     Debug.Log($"Received data is {message}") ;
+            // }
 
             dynamic stuff = JsonConvert.DeserializeObject(message);
             Newtonsoft.Json.Linq.JObject jo = stuff as Newtonsoft.Json.Linq.JObject;
