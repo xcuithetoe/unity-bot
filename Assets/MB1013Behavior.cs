@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MB1013Behavior : MonoBehaviour {
 
-    public AnalogInBehavior analogInPort;
+    public AnalogInWSBehavior analogInPort;
 
     // The following numbers come from the part spec and quickstart guide
     // which can be found here:
@@ -13,6 +13,12 @@ public class MB1013Behavior : MonoBehaviour {
     const float Vi = 5.0f / 1024.0f; // based on 5 Volts, formula from quick start quide (5.0V/1024)
 
     public bool DrawRay = false;
+
+    public double distance = MaxRange ;
+
+    public double EstimatedDistance{
+        get { return distance; }
+    }
 
     // Start is called before the first frame update
     void Start() {
@@ -31,6 +37,7 @@ public class MB1013Behavior : MonoBehaviour {
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxRange, layerMask)) {
+            distance = hit.distance ; 
             if (DrawRay) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             }
@@ -41,6 +48,7 @@ public class MB1013Behavior : MonoBehaviour {
             }
         }
         else {
+            distance = MaxRange ;
             float measuredVoltage = (MaxRange * 1000.0f * Vi) / MaxRange;
             analogInPort.setVoltage(measuredVoltage);
             if (DrawRay) {
