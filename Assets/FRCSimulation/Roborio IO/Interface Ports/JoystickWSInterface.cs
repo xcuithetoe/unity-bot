@@ -68,7 +68,7 @@ public class JoystickWSInterface : MonoBehaviour {
             jo.Add("data", dataObject);
 
             string message = JsonConvert.SerializeObject(jo);
-            ws.Send(message) ;
+            //ws.Send(message) ;
 
         }
 
